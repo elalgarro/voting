@@ -1,0 +1,45 @@
+<div>
+    <div>
+        <button onclick="resetVotes()">RESET VOTES </button>
+    </div>
+    <table id='index-table'>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>slug</th>
+                <th>description</th>
+                <th>votes</th>
+                <th></th>
+                <th style="display: none;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% submissions.forEach(function(sub){ %>
+                <tr>
+                    <td>
+                        <%- sub.name %>
+                    </td>
+                    <td>
+                        <%- sub.slug %>
+                    </td>
+                    <td>
+                        <%- sub.description %>
+                    </td>
+                    <td>
+                        <%- sub.votes %>
+                    </td>
+
+                    <td>
+                        <button onclick="deleteSubmission('<%- sub.slug %>')" method="delete">delete</button>
+
+                    </td>
+                    <td style="display: none;">
+                        <button onclick="vote('<%- sub.slug%>')"> vote </button>
+                    </td>
+                </tr>
+                <% });%>
+        </tbody>
+    </table>
+    <%- include("./partials/new") %>
+
+</div>
